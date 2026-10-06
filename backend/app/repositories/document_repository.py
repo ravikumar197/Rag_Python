@@ -1,0 +1,23 @@
+from sqlalchemy.orm import Session
+
+from app.models.document import Document
+
+
+def create_document(
+    db: Session,
+    document: Document
+):
+
+    db.add(document)
+    db.commit()
+    db.refresh(document)
+
+    return document
+
+
+def get_document(
+    db: Session,
+    document_id: int
+):
+
+    return db.get(Document, document_id)

@@ -1,0 +1,18 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg17
+    container_name: enterprise-genai-postgres
+
+    environment:
+      POSTGRES_USER: genai_user
+      POSTGRES_PASSWORD: genai_password
+      POSTGRES_DB: genai_platform
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
